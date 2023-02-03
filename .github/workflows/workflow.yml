@@ -24,6 +24,13 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.0
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "squadron-six-staging"
+          heroku_email: "walkercharles100@gmail.com"
+          usedocker: true
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
